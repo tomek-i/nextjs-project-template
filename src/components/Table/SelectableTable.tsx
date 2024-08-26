@@ -10,10 +10,8 @@ export const SelectableTable: React.FC<TableProps> = (props) => {
   const handleSelectAll = (isSelected: boolean) => {
     if (isSelected) {
       const updatedSelectedRows = props.data.map((_, index) => index)
-      console.log(`Select All: ${isSelected}`, `Updated Selected Rows:`, updatedSelectedRows)
       setSelectedRows(updatedSelectedRows)
     } else {
-      console.log(`Select All: ${isSelected}`, `Updated Selected Rows: []`)
       setSelectedRows([])
     }
   }
@@ -23,8 +21,6 @@ export const SelectableTable: React.FC<TableProps> = (props) => {
       const updatedSelectedRows = prevSelectedRows.includes(id)
         ? prevSelectedRows.filter((rowId) => rowId !== id)
         : [...prevSelectedRows, id]
-
-      console.log(`Row ID: ${id}`, `Updated Selected Rows:`, updatedSelectedRows)
 
       return updatedSelectedRows
     })
