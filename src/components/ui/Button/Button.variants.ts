@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 export const button = cva("", {
   variants: {
     variant: {
-      default: "bg-blue-700 stroke-white text-white hover:bg-blue-950",
+      default: " stroke-white px-6 text-white ",
     },
     disabled: {
       true: "cursor-not-allowed bg-slate-200 !text-slate-300",
@@ -14,11 +14,13 @@ export const button = cva("", {
       small: "p-2",
     },
   },
-  defaultVariants: {
-    variant: "default",
-    size: "default",
-    disabled: false,
-  },
+  compoundVariants: [
+    {
+      variant: "default",
+      disabled: false,
+      class: "hover:bg-blue-950 bg-blue-700",
+    },
+  ],
 })
 
 export type ButtonVariants = VariantProps<typeof button>
