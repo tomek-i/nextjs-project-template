@@ -60,7 +60,6 @@ export default function HomePage() {
             />
           ),
         }}
-        itemsPerPage={1}
         data={myData}
         columns={myColumns as Column<unknown>[]}
         show={{

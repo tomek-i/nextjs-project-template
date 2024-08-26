@@ -1,21 +1,32 @@
 "use client"
 import { getPaginationParams } from "@/util"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useMemo } from "react"
 
-export const usePagination = ({ totalItems }: { totalItems?: number }) => {
+type UsePaginationResult = {
+  page: number
+  limit: number
+  totalPages: number
+  totalItems: number
+  take: number
+  skip: number
+  setPage: (page: number) => void
+  setLimit: (limit: number) => void
+}
+
+export const usePagination = (totalItems: number, defaultLimit: number = 10) => {
   const { replace } = useRouter()
-  const searchParams = useSearchParams()
-  const params = new URLSearchParams(searchParams)
+  const params = new URLSearchParams(useSearchParams())
   const pathName = usePathname()
 
-  const { limit, page, skip, take } = getPaginationParams(searchParams)
+  const { limit, page, skip, take } = getPaginationParams(params)
   const currentPage = page
-  const totalPages = Math.ceil(totalItems! / (limit ?? 1))
+  const totalPages = useMemo(() => Math.ceil(totalItems / (limit ?? defaultLimit)), [totalItems, limit, defaultLimit])
 
   const hasNext = currentPage < totalPages
   const hasPrevious = currentPage > 1
 
-  function handlePageClick(page: number): void {
+  function setPage(page: number): void {
     if (page === 1) {
       params.delete("page")
     } else {
@@ -28,7 +39,8 @@ export const usePagination = ({ totalItems }: { totalItems?: number }) => {
     skip,
     limit,
     take,
-    handlePageClick,
+    totalPages,
+    setPage,
     hasNext,
     hasPrevious,
     currentPage,

@@ -3,8 +3,6 @@ import React from "react"
 import { type DefaultTableHeaderVariants } from "./DefaultTableHeader.variants"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { sanitizeNumber } from "@/lib/sanitizeNumber"
 import { usePagination } from "@/hooks"
 
 export type DefaultTableHeaderProps = {
@@ -30,14 +28,14 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
   itemsPerPage,
   ...props
 }) => {
-  const { handlePageClick, hasNext, hasPrevious, currentPage } = usePagination({ totalItems })
+  const { setPage, hasNext, hasPrevious, currentPage, limit, totalPages } = usePagination(totalItems!, 1)
 
   function handlePreviousClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    if (hasPrevious) handlePageClick(currentPage - 1)
+    if (hasPrevious) setPage(currentPage - 1)
   }
 
   function handleNextClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    if (hasNext) handlePageClick(currentPage + 1)
+    if (hasNext) setPage(currentPage + 1)
   }
 
   //TODO: need to update the pagination variants, the disabled state needs to remove the hover effect
@@ -49,10 +47,10 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
       </Button>
       {/* TODO: implement specific pages, relates to do proper pagination results */}
 
-      {Array.from({ length: totalItems! }, (_, index) => (
+      {Array.from({ length: totalPages }, (_, index) => (
         <Button
           key={index + 1}
-          onClick={() => handlePageClick(index + 1)}
+          onClick={() => setPage(index + 1)}
           className={currentPage === index + 1 ? "bg-red-500" : ""}
         >
           {index + 1}
