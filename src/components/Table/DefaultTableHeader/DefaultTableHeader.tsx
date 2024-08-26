@@ -38,8 +38,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
     if (hasNextPage) setPage(currentPage + 1)
   }
 
-  //TODO: need to update the pagination variants, the disabled state needs to remove the hover effect
-
+  //TODO: create pagination component to handle and render pagination on the table
   const pagination = (
     <div className="flex w-full items-center justify-between">
       <Button disabled={!hasPreviousPage} onClick={handlePreviousClick}>
