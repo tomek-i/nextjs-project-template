@@ -28,7 +28,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
   itemsPerPage,
   ...props
 }) => {
-  const { setPage, hasNextPage, hasPreviousPage, currentPage, limit, totalPages } = usePagination(totalItems!, 1)
+  const { setPage, hasNextPage, hasPreviousPage, currentPage, totalPages } = usePagination(totalItems!, 1)
 
   function handlePreviousClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
     if (hasPreviousPage) setPage(currentPage - 1)
@@ -75,6 +75,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
                 <Button
                   className="flex items-center space-x-2"
                   size="small"
+                  // TODO: implement filter modal to filter table data
                   // onClick={handleFilterButtonClick}
                 >
                   <span>
