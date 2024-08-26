@@ -24,7 +24,26 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Features
 
-TODO: list separate features unique to this starter template
+Explore the unique features of this starter template:
+
+- 🚀 **Next.js**: [nextjs.org](https://nextjs.org/)
+- 📚 **Storybook**: [storybook.js.org](https://storybook.js.org/)
+- 🎨 **Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com/)
+- 🛠️ **Class Variants Authority**: [cva.style](https://cva.style/docs/getting-started/installation)
+- 🔄 **twmerge**: [github.com/dcastil/tailwind-merge](https://github.com/dcastil/tailwind-merge)
+- ⚡ **Million.js**: [million.dev](https://million.dev/) (test and see if it's good)
+- 🛡️ **Zod**: [zod.dev](https://zod.dev/)
+- 🗄️ **Prisma / Drizzle**: [orm.drizzle.team](https://orm.drizzle.team/)
+- 🔧 **Plop**: [plopjs.com](https://plopjs.com/) (todo)
+- 🛡️ **Sentry**: [sentry.io](https://sentry.io)
+- 🤖 **GitHub Workflows**:
+  - ✅ Convert TODO's to issues
+  - 📊 Jest coverage reports
+  - 🧹 Linting
+  - 🧪 Run tests
+- 📝 **Issue & Pull Request Templates**
+- 🛠️ **Recommended Extensions**
+- ⚙️ **Custom VSCode Settings**
 
 ## Learn More
 
@@ -34,3 +53,9 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
