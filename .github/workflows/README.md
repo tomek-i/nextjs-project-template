@@ -4,6 +4,7 @@ Some additional cool workflows:
 
 - <https://github.com/marketplace/actions/sponsor-labels>
 - <https://github.com/marketplace/actions/delete-merged-branch>
+- <https://github.com/marketplace/actions/super-linter>
 
 Some workflow ideas:
 
