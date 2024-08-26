@@ -22,12 +22,12 @@ export type TableProps<T extends Record<string, unknown>> = {
   onSelectAll?: (isSelected: boolean) => void // Pass select all handler from the client-side component
 } & React.HTMLAttributes<HTMLDivElement>
 
-export type Column<TColumnaData> = {
-  name: keyof TColumnaData | string
+export type Column<ColumnaData> = {
+  name: keyof ColumnaData | string
   displayName?: string
   visible?: boolean
   sortable?: boolean
-  cellRenderer?: (data: TColumnaData) => React.ReactNode
+  cellRenderer?: (data: ColumnaData) => React.ReactNode
   type?: "string" | "number" | "date" | "boolean" | "currency"
 }
 
