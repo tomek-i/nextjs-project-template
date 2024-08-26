@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { sanitizeNumber } from "@/lib/sanitizeNumber"
+import { usePagination } from "@/hooks"
 
 export type DefaultTableHeaderProps = {
   disabled?: boolean
@@ -26,35 +27,17 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
   disabled = false,
   show = {},
   totalItems,
-  itemsPerPage = 10,
+  itemsPerPage,
   ...props
 }) => {
-  const searchParams = useSearchParams()
-  const pathName = usePathname()
-  const { replace } = useRouter()
-
-  const params = new URLSearchParams(searchParams)
-  const currentPage = sanitizeNumber(params.get("page")) || 1
-  const totalPages = Math.ceil(totalItems! / itemsPerPage)
-
-  const hasNext = currentPage < totalPages
-  const hasPrevious = currentPage > 1
-
-  function handlePageClick(page: number): void {
-    if (page === 1) {
-      params.delete("page")
-    } else {
-      params.set("page", page.toString())
-    }
-    replace(`${pathName}?${params.toString()}`)
-  }
+  const { handlePageClick, hasNext, hasPrevious, currentPage } = usePagination({ totalItems })
 
   function handlePreviousClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    handlePageClick(currentPage - 1)
+    if (hasPrevious) handlePageClick(currentPage - 1)
   }
 
   function handleNextClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    handlePageClick(currentPage + 1)
+    if (hasNext) handlePageClick(currentPage + 1)
   }
 
   //TODO: need to update the pagination variants, the disabled state needs to remove the hover effect
@@ -66,7 +49,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
       </Button>
       {/* TODO: implement specific pages, relates to do proper pagination results */}
 
-      {Array.from({ length: totalPages }, (_, index) => (
+      {Array.from({ length: totalItems! }, (_, index) => (
         <Button
           key={index + 1}
           onClick={() => handlePageClick(index + 1)}
