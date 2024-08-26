@@ -45,7 +45,6 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
       <Button disabled={!hasPreviousPage} onClick={handlePreviousClick}>
         {"<<"}
       </Button>
-      {/* TODO: implement specific pages, relates to do proper pagination results */}
 
       {Array.from({ length: totalPages }, (_, index) => (
         <Button
