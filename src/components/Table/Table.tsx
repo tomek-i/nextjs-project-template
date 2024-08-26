@@ -14,7 +14,7 @@ export type TableProps<T extends Record<string, unknown>> = {
     header?: React.ReactNode
     footer?: React.ReactNode
   }
-
+  itemsPerPage: number
   show: {
     selectAll?: boolean
   }
@@ -32,11 +32,18 @@ export type Column<T> = {
   type?: "string" | "number" | "date" | "boolean" | "currency"
 }
 
-export const Table = <T extends Record<string, unknown>>({ show, data, components, ...props }: TableProps<T>) => {
+export const Table = <T extends Record<string, unknown>>({
+  show,
+  itemsPerPage,
+  data,
+  components,
+  ...props
+}: TableProps<T>) => {
   const totalItems = data.length // Calculate the total items based on the data length
   const headerComponent = components.header
     ? React.cloneElement(components.header as React.ReactElement<any>, {
         totalItems,
+        itemsPerPage,
         ...props,
       })
     : null
@@ -44,6 +51,7 @@ export const Table = <T extends Record<string, unknown>>({ show, data, component
   const footerComponent = components.footer
     ? React.cloneElement(components.footer as React.ReactElement<any>, {
         totalItems,
+        itemsPerPage,
         ...props,
       })
     : null

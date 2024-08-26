@@ -4,8 +4,9 @@ import React, { useState } from "react"
 import { BaseTable } from "./BaseTable"
 import { TableProps } from "./Table"
 
-export const SelectableTable = <T extends Record<string, unknown>>({ ...props }: Omit<TableProps<T>, "components">) => {
-  // export const SelectableTable: React.FC<TableProps<T>> = (props) => {
+export const SelectableTable = <T extends Record<string, unknown>>({
+  ...props
+}: Omit<TableProps<T>, "components" | "itemsPerPage">) => {
   const [selectedRows, setSelectedRows] = useState<T["id"][]>([])
 
   const handleSelectAll = (isSelected: boolean) => {
@@ -15,16 +16,13 @@ export const SelectableTable = <T extends Record<string, unknown>>({ ...props }:
     } else {
       setSelectedRows([])
     }
-    console.log({ selectedRows, data: props.data })
   }
 
   const handleRowSelect = (id: T["id"]) => {
-    console.log("Row selected with id:", id)
     setSelectedRows((prevSelectedRows) => {
       const updatedSelectedRows = prevSelectedRows.includes(id)
         ? prevSelectedRows.filter((rowId) => rowId !== id)
         : [...prevSelectedRows, id]
-      console.log("Updated selected rows:", updatedSelectedRows)
       return updatedSelectedRows
     })
   }

@@ -9,7 +9,7 @@ type SelectableTableData<T> = {
   id: any
   data: T
 }
-type BaseTableProps<T extends Record<string, unknown>> = Omit<TableProps<T>, "components"> &
+type BaseTableProps<T extends Record<string, unknown>> = Omit<TableProps<T>, "components" | "itemsPerPage"> &
   TableVariants &
   TBodyVariants &
   THeadVariants
