@@ -1,5 +1,5 @@
-import { Column, Table } from "@/components/ui/Table"
-import { DefaultTableHeader } from "@/components/ui/Table/DefaultTableHeader"
+import { Column, Table } from "@/components/Table"
+import { DefaultTableHeader } from "@/components/Table/DefaultTableHeader"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
