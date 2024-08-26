@@ -6,13 +6,13 @@ import { getNestedProperty } from "@/lib/getNestedProperty"
 import { TableProps } from "./Table"
 
 type SelectableTableData<T> = {
-  id: number
+  id: any
   data: T
 }
 
-type BaseTableProps = TableProps<Record<string, unknown>> & TableVariants & TBodyVariants & THeadVariants
+type BaseTableProps<T extends Record<string, unknown>> = TableProps<T> & TableVariants & TBodyVariants & THeadVariants
 
-export const BaseTable: React.FC<BaseTableProps> = ({
+export const BaseTable = <T extends Record<string, unknown>>({
   className = "",
   size = "default",
   variant = "default",
@@ -29,7 +29,25 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   onSelectRow,
   onSelectAll,
   ...props
-}) => {
+}: BaseTableProps<T>) => {
+  // export const BaseTable: React.FC<BaseTableProps> = ({
+  // className = "",
+  // size = "default",
+  // variant = "default",
+  // rounded = false,
+  // disabled = false,
+  // show = {
+  //   selectAll: false,
+  // },
+  // data,
+  // border,
+  // columns,
+  // components = {},
+  // selectedRows = [],
+  // onSelectRow,
+  // onSelectAll,
+  // ...props
+  // }) => {
   const tableStyle = clsx(table({ variant, disabled, rounded, border, size }))
   const tbodyStyle = clsx(tbody({ variant }))
   const theadStyle = clsx(thead({ variant }))
@@ -41,7 +59,6 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   return (
     <>
       {components.header}
-      {/* <DefaultTableHeader showSearch={show.search} showPagination={show.pagination} showFilter={show.filter} /> */}
       <table className={twMerge(tableStyle, className)} {...props}>
         <thead className={twMerge(theadStyle, className)}>
           <tr>
