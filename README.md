@@ -47,14 +47,13 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 Explore the unique features of this starter template:
 
 - 🚀 **Next.js**: [nextjs.org](https://nextjs.org/)
-- 📚 **Storybook**: [storybook.js.org](https://storybook.js.org/)
-- 🎨 **Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com/)
+- 📚 **Storybook**: [storybook.js](https://storybook.js.org/)
+- 🎨 **Tailwind CSS**: [tailwindcss](https://tailwindcss.com/)
 - 🛠️ **Class Variants Authority**: [cva.style](https://cva.style/docs/getting-started/installation)
 - 🔄 **twmerge**: [github.com/dcastil/tailwind-merge](https://github.com/dcastil/tailwind-merge)
-- ⚡ **Million.js**: [million.dev](https://million.dev/) (test and see if it's good)
 - 🛡️ **Zod**: [zod.dev](https://zod.dev/)
-- 🗄️ **Prisma / Drizzle**: [orm.drizzle.team](https://orm.drizzle.team/)
-- 🔧 **Plop**: [plopjs.com](https://plopjs.com/) (todo)
+- 🗄️ **Drizzle**: [orm.drizzle.team](https://orm.drizzle.team/)
+- 🔧 **Plop**: [plopjs.com](https://plopjs.com/)
 - 🛡️ **Sentry**: [sentry.io](https://sentry.io)
 - 🤖 **GitHub Workflows**:
   - ✅ Convert TODO's to issues
