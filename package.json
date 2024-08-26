@@ -33,6 +33,7 @@
     "vercel:prod": "vercel --prod",
     "lint": "next lint",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx}\"",
     "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "storybook": "storybook dev -p 6006",
