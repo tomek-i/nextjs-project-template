@@ -2,13 +2,13 @@ import React from "react"
 import { SelectableTable } from "./SelectableTable"
 import { BaseTable } from "./BaseTable"
 
-export type TableProps = {
+export type TableProps<T> = {
   HeaderComponent?: React.FC
   FooterComponent?: React.FC
 
   disabled?: boolean
-  data: unknown[]
-  columns: Column<unknown>[]
+  data: T[]
+  columns: Column<Record<string, unknown>>[]
 
   components: {
     header?: React.ReactNode
@@ -29,7 +29,7 @@ type SelectableTableData<T> = {
 }
 
 export type Column<T = unknown> = {
-  name: keyof Partial<T> | string
+  name: keyof T | string
   displayName?: string
   visible?: boolean
   sortable?: boolean
@@ -37,7 +37,7 @@ export type Column<T = unknown> = {
   type?: "string" | "number" | "date" | "boolean" | "currency"
 }
 
-export const Table: React.FC<TableProps> = ({ show, ...props }) => {
+export const Table = <T extends Record<string, unknown>>({ show, ...props }: TableProps<T>) => {
   if (show.selectAll)
     return (
       <>

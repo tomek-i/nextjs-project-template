@@ -10,7 +10,7 @@ type SelectableTableData<T> = {
   data: T
 }
 
-type BaseTableProps = TableProps & TableVariants & TBodyVariants & THeadVariants
+type BaseTableProps = TableProps<Record<string, unknown>> & TableVariants & TBodyVariants & THeadVariants
 
 export const BaseTable: React.FC<BaseTableProps> = ({
   className = "",
