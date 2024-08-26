@@ -1,16 +1,14 @@
-import React from "react"
+import React, { Key } from "react"
 import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { table, thead, tbody, type TableVariants, type TBodyVariants, type THeadVariants } from "./Table.variants"
 import { getNestedProperty } from "@/lib/getNestedProperty"
 import { TableProps } from "./Table"
 
-type SelectableTableData<T> = {
-  id: any
-  data: T
-}
-
-type BaseTableProps<T extends Record<string, unknown>> = TableProps<T> & TableVariants & TBodyVariants & THeadVariants
+type BaseTableProps<T extends Record<string, unknown>> = Omit<TableProps<T>, "components" | "itemsPerPage"> &
+  TableVariants &
+  TBodyVariants &
+  THeadVariants
 
 export const BaseTable = <T extends Record<string, unknown>>({
   className = "",
@@ -24,41 +22,17 @@ export const BaseTable = <T extends Record<string, unknown>>({
   data,
   border,
   columns,
-  components = {},
   selectedRows = [],
   onSelectRow,
   onSelectAll,
   ...props
 }: BaseTableProps<T>) => {
-  // export const BaseTable: React.FC<BaseTableProps> = ({
-  // className = "",
-  // size = "default",
-  // variant = "default",
-  // rounded = false,
-  // disabled = false,
-  // show = {
-  //   selectAll: false,
-  // },
-  // data,
-  // border,
-  // columns,
-  // components = {},
-  // selectedRows = [],
-  // onSelectRow,
-  // onSelectAll,
-  // ...props
-  // }) => {
   const tableStyle = clsx(table({ variant, disabled, rounded, border, size }))
   const tbodyStyle = clsx(tbody({ variant }))
   const theadStyle = clsx(thead({ variant }))
 
-  const myTableData: SelectableTableData<unknown>[] = React.useMemo(() => {
-    return data.map((data, index) => ({ id: index, data }))
-  }, [data])
-
   return (
     <>
-      {components.header}
       <table className={twMerge(tableStyle, className)} {...props}>
         <thead className={twMerge(theadStyle, className)}>
           <tr>
@@ -68,7 +42,7 @@ export const BaseTable = <T extends Record<string, unknown>>({
                   type="checkbox"
                   name="select all"
                   onChange={(e) => onSelectAll?.(e.target.checked)}
-                  checked={selectedRows.length === myTableData.length}
+                  checked={selectedRows.length === data.length}
                 />
               </th>
             )}
@@ -80,20 +54,20 @@ export const BaseTable = <T extends Record<string, unknown>>({
           </tr>
         </thead>
         <tbody className={twMerge(tbodyStyle, className)}>
-          {myTableData.map((row, rowIndex) => (
-            <tr key={row.id ?? rowIndex} className="hover:bg-slate-300">
+          {data.map((row, rowIndex) => (
+            <tr key={(row.id as T["id"] as Key) ?? rowIndex} className="hover:bg-slate-300">
               {show.selectAll && (
                 <td>
                   <input
                     type="checkbox"
                     id={`select-${row.id ?? rowIndex}`}
-                    checked={selectedRows.includes(row.id)}
-                    onChange={() => onSelectRow?.(row.id)}
+                    checked={selectedRows.includes(row.id as T["id"])}
+                    onChange={() => onSelectRow?.(row.id as T["id"])}
                   />
                 </td>
               )}
               {columns.map((column) => (
-                <td key={column.name}>{getNestedProperty(row.data, column.name)}</td>
+                <td key={column.name}>{getNestedProperty(row, column.name)}</td>
               ))}
             </tr>
           ))}
@@ -104,7 +78,6 @@ export const BaseTable = <T extends Record<string, unknown>>({
           </tr>
         </tfoot>
       </table>
-      {components.footer}
     </>
   )
 }
