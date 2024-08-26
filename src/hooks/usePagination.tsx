@@ -3,17 +3,6 @@ import { getPaginationParams } from "@/util"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useMemo } from "react"
 
-type UsePaginationResult = {
-  page: number
-  limit: number
-  totalPages: number
-  totalItems: number
-  take: number
-  skip: number
-  setPage: (page: number) => void
-  setLimit: (limit: number) => void
-}
-
 export const usePagination = (totalItems: number, defaultLimit: number = 10) => {
   const { replace } = useRouter()
   const params = new URLSearchParams(useSearchParams())
