@@ -32,13 +32,13 @@ export type Column<T> = {
   type?: "string" | "number" | "date" | "boolean" | "currency"
 }
 
-export const Table = <T extends Record<string, unknown>>({
+export const Table = <TableData extends Record<string, unknown>>({
   show,
   itemsPerPage,
   data,
   components,
   ...props
-}: TableProps<T>) => {
+}: TableProps<TableData>) => {
   const totalItems = data.length // Calculate the total items based on the data length
   const headerComponent = components.header
     ? React.cloneElement(components.header as React.ReactElement<any>, {
