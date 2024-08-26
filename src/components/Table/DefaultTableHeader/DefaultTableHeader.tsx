@@ -1,9 +1,9 @@
 "use client"
 import React from "react"
 import { type DefaultTableHeaderVariants } from "./DefaultTableHeader.variants"
-import { Button } from "../../Button"
-import { Input } from "../../Input"
-import { usePathname, useSearchParams } from "next/navigation"
+import { Button } from "@/components/ui/Button"
+import { Input } from "@/components/ui/Input"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { sanitizeNumber } from "@/lib/sanitizeNumber"
 
 export type DefaultTableHeaderProps = {
