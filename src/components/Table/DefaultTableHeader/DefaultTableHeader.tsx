@@ -14,6 +14,8 @@ export type DefaultTableHeaderProps = {
     search?: boolean
     selectAll?: boolean
   }
+  totalItems?: number
+  itemsPerPage?: number
 } & React.HTMLAttributes<HTMLDivElement> &
   DefaultTableHeaderVariants
 
@@ -23,42 +25,40 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
   variant = "default",
   disabled = false,
   show = {},
+  totalItems,
+  itemsPerPage = 10,
   ...props
 }) => {
-  // const style = clsx(defaulttableheader({ variant, disabled, size }))
   const searchParams = useSearchParams()
   const pathName = usePathname()
   const { replace } = useRouter()
 
   const params = new URLSearchParams(searchParams)
+  const currentPage = sanitizeNumber(params.get("page")) || 1
+  const totalPages = Math.ceil(totalItems! / itemsPerPage)
 
-  //TODO: implement proper pagination based on total pages this way we can disable the next button if there is no more
-  const hasNext = /*ITEMS_PER_PAGE * */ Number(params.get("page")) - 1 /* + ITEMS_PER_PAGE  < MAX_ITEMS */
-  const hasPrevious = /*ITEMS_PER_PAGE * */ Number(params.get("page")) - 1 > 0
+  const hasNext = currentPage < totalPages
+  const hasPrevious = currentPage > 1
 
-  function handlePreviousClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    const pageNumber = Math.max(sanitizeNumber(params.get("page")) - 1, 1) || 1
-
-    if (pageNumber === 1) {
+  function handlePageClick(page: number): void {
+    if (page === 1) {
       params.delete("page")
     } else {
-      params.set("page", pageNumber.toString())
+      params.set("page", page.toString())
     }
     replace(`${pathName}?${params.toString()}`)
+  }
+
+  function handlePreviousClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    handlePageClick(currentPage - 1)
   }
 
   function handleNextClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    const sanitized = sanitizeNumber(params.get("page")) || 1
-    const pageNumber = Math.max(sanitized + 1, 1)
-    if (pageNumber === 1) {
-      params.delete("page")
-    } else {
-      params.set("page", pageNumber.toString())
-    }
-    replace(`${pathName}?${params.toString()}`)
+    handlePageClick(currentPage + 1)
   }
 
   //TODO: need to update the pagination variants, the disabled state needs to remove the hover effect
+
   const pagination = (
     <div className="flex w-full items-center justify-between">
       <Button disabled={!hasPrevious} onClick={handlePreviousClick}>
@@ -66,9 +66,15 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
       </Button>
       {/* TODO: implement specific pages, relates to do proper pagination results */}
 
-      <Button>1</Button>
-      <Button>2</Button>
-      <Button>3</Button>
+      {Array.from({ length: totalPages }, (_, index) => (
+        <Button
+          key={index + 1}
+          onClick={() => handlePageClick(index + 1)}
+          className={currentPage === index + 1 ? "bg-red-500" : ""}
+        >
+          {index + 1}
+        </Button>
+      ))}
 
       <Button disabled={!hasNext} onClick={handleNextClick}>
         {">>"}

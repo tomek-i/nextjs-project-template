@@ -32,19 +32,37 @@ export type Column<T> = {
   type?: "string" | "number" | "date" | "boolean" | "currency"
 }
 
-export const Table = <T extends Record<string, unknown>>({ show, ...props }: TableProps<T>) => {
-  if (show.selectAll)
-    return (
-      <>
-        <h1>Selectable</h1>
-        <SelectableTable {...props} show={show} />
-      </>
-    )
-  else
-    return (
-      <>
-        <h1>Base Table</h1>
-        <BaseTable {...props} show={show} />
-      </>
-    )
+export const Table = <T extends Record<string, unknown>>({ show, data, components, ...props }: TableProps<T>) => {
+  const totalItems = data.length // Calculate the total items based on the data length
+  const headerComponent = components.header
+    ? React.cloneElement(components.header as React.ReactElement<any>, {
+        totalItems,
+        ...props,
+      })
+    : null
+
+  const footerComponent = components.footer
+    ? React.cloneElement(components.footer as React.ReactElement<any>, {
+        totalItems,
+        ...props,
+      })
+    : null
+
+  return (
+    <>
+      {headerComponent}
+      {show.selectAll ? (
+        <>
+          <h1>Selectable</h1>
+          <SelectableTable {...props} show={show} data={data} />
+        </>
+      ) : (
+        <>
+          <h1>Base Table</h1>
+          <BaseTable {...props} show={show} data={data} />
+        </>
+      )}
+      {footerComponent}
+    </>
+  )
 }

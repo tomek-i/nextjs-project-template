@@ -45,6 +45,7 @@ export default function HomePage() {
         components={{
           header: (
             <DefaultTableHeader
+              itemsPerPage={1}
               show={{
                 pagination: true,
                 search: true,
@@ -54,6 +55,7 @@ export default function HomePage() {
           ),
           footer: (
             <DefaultTableHeader
+              itemsPerPage={1}
               show={{
                 pagination: true,
               }}
