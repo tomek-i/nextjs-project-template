@@ -5,10 +5,6 @@ import { table, thead, tbody, type TableVariants, type TBodyVariants, type THead
 import { getNestedProperty } from "@/lib/getNestedProperty"
 import { TableProps } from "./Table"
 
-type SelectableTableData<T> = {
-  id: any
-  data: T
-}
 type BaseTableProps<T extends Record<string, unknown>> = Omit<TableProps<T>, "components" | "itemsPerPage"> &
   TableVariants &
   TBodyVariants &
@@ -34,10 +30,6 @@ export const BaseTable = <T extends Record<string, unknown>>({
   const tableStyle = clsx(table({ variant, disabled, rounded, border, size }))
   const tbodyStyle = clsx(tbody({ variant }))
   const theadStyle = clsx(thead({ variant }))
-
-  // const myTableData: SelectableTableData<unknown>[] = React.useMemo(() => {
-  //   return data.map((data, index) => ({ id: index, data }))
-  // }, [data])
 
   return (
     <>
