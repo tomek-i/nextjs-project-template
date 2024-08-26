@@ -28,7 +28,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
   // const style = clsx(defaulttableheader({ variant, disabled, size }))
   const searchParams = useSearchParams()
   const pathName = usePathname()
-  // const { replace } = useRouter()
+  const { replace } = useRouter()
 
   const params = new URLSearchParams(searchParams)
 
@@ -44,7 +44,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
     } else {
       params.set("page", pageNumber.toString())
     }
-    // replace(`${pathName}?${params.toString()}`)
+    replace(`${pathName}?${params.toString()}`)
   }
 
   function handleNextClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
@@ -55,15 +55,13 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
     } else {
       params.set("page", pageNumber.toString())
     }
-    // replace(`${pathName}?${params.toString()}`)
+    replace(`${pathName}?${params.toString()}`)
   }
 
+  //TODO: need to update the pagination variants, the disabled state needs to remove the hover effect
   const pagination = (
     <div className="flex w-full items-center justify-between">
-      <Button
-        // disabled={!hasPrevious}
-        onClick={handlePreviousClick}
-      >
+      <Button disabled={!hasPrevious} onClick={handlePreviousClick}>
         {"<<"}
       </Button>
       {/* TODO: implement specific pages, relates to do proper pagination results */}
@@ -72,10 +70,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
       <Button>2</Button>
       <Button>3</Button>
 
-      <Button
-        // disabled={!hasNext}
-        onClick={handleNextClick}
-      >
+      <Button disabled={!hasNext} onClick={handleNextClick}>
         {">>"}
       </Button>
     </div>
