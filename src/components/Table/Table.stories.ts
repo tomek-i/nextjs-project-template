@@ -52,19 +52,10 @@ const myColumns: Column<ExampleData>[] = [
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    variant: "default",
     data: myData,
-    //TODO: why do i need to cast it like that?
-    columns: myColumns as Column<unknown>[],
-    rounded: false,
-
+    columns: myColumns as Column<Record<string, unknown>>[],
     show: {
-      filter: false,
-      pagination: true,
-      search: false,
       selectAll: false,
     },
-
-    border: false,
   },
 }

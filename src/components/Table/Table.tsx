@@ -2,7 +2,7 @@ import React from "react"
 import { SelectableTable } from "./SelectableTable"
 import { BaseTable } from "./BaseTable"
 
-export type TableProps<T> = {
+export type TableProps<T extends Record<string, unknown>> = {
   HeaderComponent?: React.FC
   FooterComponent?: React.FC
 
@@ -28,7 +28,7 @@ type SelectableTableData<T> = {
   data: T
 }
 
-export type Column<T = unknown> = {
+export type Column<T> = {
   name: keyof T | string
   displayName?: string
   visible?: boolean
