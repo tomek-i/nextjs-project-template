@@ -39,7 +39,6 @@ Explore the unique features of this starter template:
 - 🤖 **GitHub Workflows**:
   - ✅ Convert TODO's to issues
   - 📊 Jest coverage reports
-  - 🧹 Linting
   - 🧪 Run tests
 - 📝 **Issue & Pull Request Templates**
 - 🛠️ **Recommended Extensions**
