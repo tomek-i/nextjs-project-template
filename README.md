@@ -2,6 +2,26 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Learn More](#learn-more)
+- [Deploy on Vercel](#deploy-on-vercel)
+
+## Introduction
+
+This project serves as a starter template for building modern web applications using Next.js. It includes a set of tools and libraries to help you get started quickly and efficiently.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- Node.js (>= 20.x)
+- npm, yarn, pnpm, or bun (package managers)
+
 ## Getting Started
 
 First, run the development server:
