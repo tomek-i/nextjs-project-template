@@ -1,4 +1,4 @@
-import { Conflict, Created, OK, ServerError } from "./responses"
+import { BadRequest, Conflict, Created, NoContent, NotFound, OK, ServerError, Unauthorized } from "./responses"
 
 describe("HTTP Response Functions", () => {
   describe("HTTP - OK", () => {
@@ -149,58 +149,96 @@ describe("HTTP Response Functions", () => {
   })
 
   describe("HTTP - NoContent", () => {
-    it("should return a response with status XXX and the given payload", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 204", async () => {
+      const response = NoContent()
+      expect(response.status).toBe(204)
     })
 
-    it("should return a response with status XXX", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with no payload", async () => {
+      const response = NoContent()
+      const result = await response.text()
+      expect(result).toBe("")
     })
 
-    it("should return a the property ok set to be false", async () => {
-      throw new Error("Not implemented")
+    it("should not have an ok property", async () => {
+      const response = NoContent()
+      const result = await response.json().catch(() => null)
+      expect(result).toBeNull()
     })
   })
 
   describe("HTTP - BadRequest", () => {
-    it("should return a response with status XXX and the given payload", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 400 and the given payload", async () => {
+      const payload = { error: "Bad request" }
+      const response = BadRequest(payload)
+      const result = await response.json()
+
+      expect(response.status).toBe(400)
+      expect(result.error).toEqual(payload)
     })
 
-    it("should return a response with status XXX", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 400", async () => {
+      const payload = { error: "Bad request" }
+      const response = BadRequest(payload)
+
+      expect(response.status).toBe(400)
     })
 
     it("should return a the property ok set to be false", async () => {
-      throw new Error("Not implemented")
+      const payload = { error: "Bad request" }
+      const response = BadRequest(payload)
+
+      expect(response.ok).toBe(false)
     })
   })
 
   describe("HTTP - Unauthorized", () => {
-    it("should return a response with status XXX and the given payload", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 401 and the given payload", async () => {
+      const payload = { error: "Unauthorized" }
+      const response = Unauthorized(payload)
+      const result = await response.json()
+
+      expect(response.status).toBe(401)
+      expect(result.error).toEqual(payload)
     })
 
-    it("should return a response with status XXX", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 401", async () => {
+      const payload = { error: "Unauthorized" }
+      const response = Unauthorized(payload)
+
+      expect(response.status).toBe(401)
     })
 
     it("should return a the property ok set to be false", async () => {
-      throw new Error("Not implemented")
+      const payload = { error: "Unauthorized" }
+      const response = Unauthorized(payload)
+
+      expect(response.ok).toBe(false)
     })
   })
 
   describe("HTTP - NotFound", () => {
-    it("should return a response with status XXX and the given payload", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 404 and the given payload", async () => {
+      const payload = { error: "Not found" }
+      const response = NotFound(payload)
+      const result = await response.json()
+
+      expect(response.status).toBe(404)
+      expect(result.error).toEqual(payload)
     })
 
-    it("should return a response with status XXX", async () => {
-      throw new Error("Not implemented")
+    it("should return a response with status 404", async () => {
+      const payload = { error: "Not found" }
+      const response = NotFound(payload)
+
+      expect(response.status).toBe(404)
     })
 
     it("should return a the property ok set to be false", async () => {
-      throw new Error("Not implemented")
+      const payload = { error: "Not found" }
+      const response = NotFound(payload)
+
+      expect(response.ok).toBe(false)
     })
   })
 })
