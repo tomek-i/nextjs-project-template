@@ -18,8 +18,8 @@ export type TableProps<T extends Record<string, unknown>> = {
   show: {
     selectAll?: boolean
   }
-  selectedRows?: number[] // Pass selected rows from the client-side component
-  onSelectRow?: (id: number) => void // Pass row selection handler from the client-side component
+  selectedRows?: T["id"][] // Pass selected rows from the client-side component
+  onSelectRow?: (id: T["id"]) => void // Pass row selection handler from the client-side component
   onSelectAll?: (isSelected: boolean) => void // Pass select all handler from the client-side component
 } & React.HTMLAttributes<HTMLDivElement>
 
