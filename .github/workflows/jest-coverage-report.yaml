@@ -1,5 +1,5 @@
 # https://github.com/marketplace/actions/jest-coverage-report
-name: "coverage"
+name: "Run Tests and Generate Coverage"
 on:
   pull_request:
     branches:
