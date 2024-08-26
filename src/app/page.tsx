@@ -1,9 +1,36 @@
+import { Column, Table } from "@/components/ui/Table"
+import { DefaultTableHeader } from "@/components/ui/Table/DefaultTableHeader"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Home - Example Server Page",
   description: "This is a page that is pre-rendered on the server for {{pascalCase name}}.",
 }
+
+type ExampleData = {
+  id: number
+  name: string
+  age: number
+  email?: string
+  address?: { street: string; city: string; state: string; zip: string }
+}
+const myData: ExampleData[] = [
+  {
+    id: 343,
+    name: "John Doe",
+    age: 28,
+    address: { street: "123 Main St", city: "New York", state: "NY", zip: "10001" },
+  },
+  { id: 3243, name: "Jane Smith", age: 34, email: "h8vzP@example.com" },
+  { id: 543, name: "Sam Johnson", age: 45 },
+]
+
+const myColumns: Column<ExampleData>[] = [
+  { name: "name", displayName: "Name" },
+  { name: "age", displayName: "Age" },
+  { name: "address.city", displayName: "City" },
+  { name: "email", displayName: "Email" },
+]
 
 export default function HomePage() {
   return (
@@ -14,6 +41,31 @@ export default function HomePage() {
           <code className="font-mono font-bold">src/app/page.tsx</code>
         </p>
       </div>
+      <Table
+        components={{
+          header: (
+            <DefaultTableHeader
+              show={{
+                pagination: true,
+                search: true,
+                filter: true,
+              }}
+            />
+          ),
+          footer: (
+            <DefaultTableHeader
+              show={{
+                pagination: true,
+              }}
+            />
+          ),
+        }}
+        data={myData}
+        columns={myColumns as Column<unknown>[]}
+        show={{
+          selectAll: true,
+        }}
+      />
     </main>
   )
 }
