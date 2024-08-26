@@ -28,21 +28,21 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
   itemsPerPage,
   ...props
 }) => {
-  const { setPage, hasNext, hasPrevious, currentPage, limit, totalPages } = usePagination(totalItems!, 1)
+  const { setPage, hasNextPage, hasPreviousPage, currentPage, limit, totalPages } = usePagination(totalItems!, 1)
 
   function handlePreviousClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    if (hasPrevious) setPage(currentPage - 1)
+    if (hasPreviousPage) setPage(currentPage - 1)
   }
 
   function handleNextClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    if (hasNext) setPage(currentPage + 1)
+    if (hasNextPage) setPage(currentPage + 1)
   }
 
   //TODO: need to update the pagination variants, the disabled state needs to remove the hover effect
 
   const pagination = (
     <div className="flex w-full items-center justify-between">
-      <Button disabled={!hasPrevious} onClick={handlePreviousClick}>
+      <Button disabled={!hasPreviousPage} onClick={handlePreviousClick}>
         {"<<"}
       </Button>
       {/* TODO: implement specific pages, relates to do proper pagination results */}
@@ -57,7 +57,7 @@ export const DefaultTableHeader: React.FC<DefaultTableHeaderProps> = ({
         </Button>
       ))}
 
-      <Button disabled={!hasNext} onClick={handleNextClick}>
+      <Button disabled={!hasNextPage} onClick={handleNextClick}>
         {">>"}
       </Button>
     </div>
