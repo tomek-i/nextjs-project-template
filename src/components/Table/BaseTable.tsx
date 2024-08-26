@@ -34,7 +34,9 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   const tbodyStyle = clsx(tbody({ variant }))
   const theadStyle = clsx(thead({ variant }))
 
-  const myTableData: SelectableTableData<unknown>[] = data.map((data, index) => ({ id: index, data }))
+  const myTableData: SelectableTableData<unknown>[] = React.useMemo(() => {
+    return data.map((data, index) => ({ id: index, data }))
+  }, [data])
 
   return (
     <>
