@@ -5,7 +5,6 @@ import { BaseTable } from "./BaseTable"
 import { TableProps } from "./Table"
 
 export const SelectableTable = <T extends Record<string, unknown>>({ ...props }: TableProps<T>) => {
-  // export const SelectableTable: React.FC<TableProps<T>> = (props) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([])
 
   const handleSelectAll = (isSelected: boolean) => {

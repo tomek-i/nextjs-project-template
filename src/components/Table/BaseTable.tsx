@@ -41,7 +41,6 @@ export const BaseTable: React.FC<BaseTableProps> = ({
   return (
     <>
       {components.header}
-      {/* <DefaultTableHeader showSearch={show.search} showPagination={show.pagination} showFilter={show.filter} /> */}
       <table className={twMerge(tableStyle, className)} {...props}>
         <thead className={twMerge(theadStyle, className)}>
           <tr>

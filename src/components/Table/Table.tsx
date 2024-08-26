@@ -23,11 +23,6 @@ export type TableProps<T extends Record<string, unknown>> = {
   onSelectAll?: (isSelected: boolean) => void // Pass select all handler from the client-side component
 } & React.HTMLAttributes<HTMLDivElement>
 
-type SelectableTableData<T> = {
-  id: number
-  data: T
-}
-
 export type Column<T> = {
   name: keyof T | string
   displayName?: string
