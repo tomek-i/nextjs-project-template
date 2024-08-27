@@ -6,6 +6,9 @@ export const label = cva(
     variants: {
       variant: {
         default: "",
+        primary: "text-blue-600",
+        secondary: "text-gray-600",
+        error: "text-red-600",
       },
       disabled: {
         true: "cursor-not-allowed !text-slate-300",
