@@ -58,4 +58,43 @@ export const LargeSize: Story = {
     children: "Large Label",
   },
 }
+
+export const MediumSize: Story = {
+  args: {
+    ...Default.args,
+    size: "medium",
+    children: "Medium Label",
+  },
+}
+
+export const SmallSize: Story = {
+  args: {
+    ...Default.args,
+    size: "small",
+    children: "Small Label",
+  },
+}
+
+export const Primary: Story = {
+  args: {
+    ...Default.args,
+    variant: "primary",
+    children: "Primary Label",
+  },
+}
+
+export const Secondary: Story = {
+  args: {
+    ...Default.args,
+    variant: "secondary",
+    children: "Secondary Label",
+  },
+}
+
+export const Error: Story = {
+  args: {
+    ...Default.args,
+    variant: "error",
+    children: "Error Label",
+  },
 }
