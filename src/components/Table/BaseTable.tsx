@@ -72,6 +72,10 @@ export const BaseTable = <T extends Record<string, unknown>>({
             </tr>
           ))}
         </tbody>
+        {/* 
+          TODO: implement back the footer variant styling 
+          TODO: footer should be passed into the component as a prop
+          */}
         <tfoot /*className={twMerge(tfootStyle, className)}*/>
           <tr>
             <td colSpan={columns.length + (show.selectAll ? 1 : 0)}>Footer</td>
