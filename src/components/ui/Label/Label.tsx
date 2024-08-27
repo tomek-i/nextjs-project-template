@@ -21,7 +21,11 @@ export const Label: React.FC<LabelProps> = ({
   return (
     <label htmlFor={htmlFor} className={twMerge(style, className)} {...props}>
       {children}
-      {required && *}
+      {required && (
+        <span aria-hidden="true" className="ml-1 text-red-500">
+          *
+        </span>
+      )}
     </label>
   )
 }
