@@ -1,27 +1,29 @@
 import { cva, type VariantProps } from "class-variance-authority"
 
 export const label = cva(
-  "",
+  "font-medium leading-none transition-colors duration-300 ease-in-out peer-disabled:opacity-70",
   {
     variants: {
       variant: {
-        default:
-          "bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950",
+        default: "",
       },
-        disabled: {
-        true: "cursor-not-allowed bg-slate-200 !text-slate-300",
+      disabled: {
+        true: "cursor-not-allowed !text-slate-300",
         false: "",
       },
       size: {
-        default: "w-full px-6 py-3",
+        default: "text-base",
+        large: "text-lg",
+        medium: "text-sm",
+        small: "text-xs",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
-      disabled:false
+      disabled: false,
     },
   }
-);
+)
 
 export type LabelVariants = VariantProps<typeof label>
