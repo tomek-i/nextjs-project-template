@@ -31,7 +31,31 @@ export const Default: Story = {
     size: "default",
     disabled: false,
     required: false,
-
-    children: "Label",
+    children: "Default Label",
   },
+}
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    disabled: true,
+    children: "Disabled Label",
+  },
+}
+
+export const Required: Story = {
+  args: {
+    ...Default.args,
+    required: true,
+    children: "Required Label",
+  },
+}
+
+export const LargeSize: Story = {
+  args: {
+    ...Default.args,
+    size: "large",
+    children: "Large Label",
+  },
+}
 }
