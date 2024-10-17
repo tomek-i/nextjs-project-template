@@ -13,11 +13,36 @@
     --background-rgb: 0, 0, 0;
   }
 } */
-
+/* https://dev.to/alvaromontoro/css-one-liners-to-improve-almost-every-project-18m?ref=dailydev */
 @layer base {
   body {
+    /* Limit the content width in the viewport */
+    /* 
+    Adding this one-liner will reduce the content size to occupy 90% of the viewport, 
+    limiting its width between 320 and 1000 pixels (feel free to update the minimum and maximum values).
+    This change will automatically make your content look much nicer. 
+    It will no longer be a vast text block but something that looks more structured and organized.
+    And if you also add margin: auto; to the body, the content will be centered on the page. 
+    Two lines of code make the content look so much better.
+    */
+    max-width: clamp(320px, 90%, 1000px);
+    /* additional recommendation */
+    margin: auto;
+
+    /* Increase the text size */
+    font-size: 1.25rem;
+    /* Increase the space among lines */
+    line-height: 1.5;
+
+    /*******************************/
+
     color: rgb(var(--foreground-rgb));
     background-color: rgb(var(--background-rgb));
+  }
+
+  /* Limit the size of images */
+  img {
+    max-width: 100%;
   }
 
   h1 {
@@ -100,7 +125,7 @@
     gap: 20px;
     width: 300px;
     overflow-x: scroll;
-    /* or proximity which can snack back to the center if not dragged far */
+    /* or proximity which can snap back to the center if not dragged far */
     scroll-snap-type: x mandatory;
   }
   /* apply this to the elements that should be in the slider */

@@ -53,12 +53,15 @@ Explore the unique features of this starter template:
 - 🔄 **twmerge**: [github.com/dcastil/tailwind-merge](https://github.com/dcastil/tailwind-merge)
 - 🛡️ **Zod**: [zod.dev](https://zod.dev/)
 - 🗄️ **Drizzle**: [orm.drizzle.team](https://orm.drizzle.team/)
+  - TODO: perhaps change to prisma instead
 - 🔧 **Plop**: [plopjs.com](https://plopjs.com/)
 - 🛡️ **Sentry**: [sentry.io](https://sentry.io)
 - 🤖 **GitHub Workflows**:
   - ✅ Convert TODO's to issues
   - 📊 Jest coverage reports
   - 🧪 Run tests
+    TODO: add stryker mutation testing https://typescript.tv/testing/boost-your-typescript-tests-with-mutation-testing/
+    TODO: add e2e testing using plyweight or puppeteer or cypress
 - 📝 **Issue & Pull Request Templates**
 - 🛠️ **Recommended Extensions**
 - ⚙️ **Custom VSCode Settings**
