@@ -1,25 +1,15 @@
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS" | "HEAD" | "CONNECT" | "TRACE"
 
-type successResponse<T> = {
-  ok: true
-  data: T
-}
 type errorResponse<T> = {
-  ok: false
   error: T
 }
 
 const success = <T>(payload: T) => {
-  const response: successResponse<T> = {
-    ok: true,
-    data: payload,
-  }
-  return response
+  return payload
 }
 
 const error = <T>(payload: T) => {
   const errorResponse: errorResponse<T> = {
-    ok: false,
     error: {
       ...payload,
     },
