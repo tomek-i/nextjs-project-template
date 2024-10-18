@@ -50,6 +50,9 @@ Explore the unique features of this starter template:
 - 🗄️ **Prisma**: [prisma.io](https://www.prisma.io/)
 - 🔧 **Plop**: [plopjs.com](https://plopjs.com/)
 - 🛡️ **Sentry**: [sentry.io](https://sentry.io)
+- 🐶 **Husky**: [husky](https://typicode.github.io/husky/)
+  - 💄 automatically add emojis to commit messages
+  - 🧪 run tests pre-commit
 - 🤖 **GitHub Workflows**:
   - ✅ Convert TODO's to issues
   - 📊 Jest coverage reports // TODO: enable coverage reports
