@@ -10,7 +10,7 @@ export async function POST() {
   return Created({ id: 1, message: "Resource created" })
 }
 export async function PUT() {
-  return BadRequest({ error: "Bad request" })
+  return BadRequest({ message: "Bad Put request with custom message" })
 }
 export async function DELETE() {
   return NoContent()
