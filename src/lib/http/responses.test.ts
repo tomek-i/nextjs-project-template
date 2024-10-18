@@ -19,47 +19,44 @@ describe("HTTP Response Functions", () => {
       const result = await response.json()
 
       expect(response.status).toBe(200)
-      expect(result.data).toEqual(payload)
+      expect(result).toEqual(payload)
     })
 
     it("should return a response with status 200 and no payload if none is provided", async () => {
       const response = OK()
       const result = await response.json()
 
-      expect(result).toEqual({
-        data: undefined,
-        ok: true,
-      })
+      expect(result).toEqual(null)
     })
 
     it("should return a response with the correct payload type", async () => {
       const payload = { foo: "bar" }
       const response = await OK(payload).json()
-      expect(response.data).toEqual(payload)
+      expect(response).toEqual(payload)
     })
 
     it("should handle an empty object payload correctly", async () => {
       const payload = {}
       const response = await OK(payload).json()
-      expect(response.data).toEqual(payload)
+      expect(response).toEqual(payload)
     })
 
     it("should handle a null payload correctly", async () => {
       const payload = null
       const response = await OK(payload).json()
-      expect(response.data).toBeNull()
+      expect(response).toBeNull()
     })
 
     it("should handle an array payload correctly", async () => {
       const payload = [1, 2, 3]
       const response = await OK(payload).json()
-      expect(response.data).toEqual(payload)
+      expect(response).toEqual(payload)
     })
 
     it("should handle a string payload correctly", async () => {
       const payload = "test"
       const response = await OK(payload).json()
-      expect(response.data).toBe(payload)
+      expect(response).toBe(payload)
     })
   })
 
@@ -82,7 +79,7 @@ describe("HTTP Response Functions", () => {
       const result = await response.json()
 
       expect(response.status).toBe(201)
-      expect(result.data).toEqual(payload)
+      expect(result).toEqual(payload)
     })
 
     it("should return a the location headers", async () => {
