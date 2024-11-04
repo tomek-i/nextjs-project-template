@@ -97,11 +97,11 @@ module.exports = async function (plop) {
         path: "src/components/{{pascalCase name}}/{{pascalCase name}}.tsx",
         templateFile: ".plop-templates/react/component/templates/component.hbs",
       },
-      {
-        type: "add",
-        path: "src/components/{{pascalCase name}}/{{pascalCase name}}.test.tsx",
-        templateFile: ".plop-templates/react/component/templates/test.hbs",
-      },
+      // {
+      //   type: "add",
+      //   path: "src/components/{{pascalCase name}}/{{pascalCase name}}.test.tsx",
+      //   templateFile: ".plop-templates/react/component/templates/test.hbs",
+      // },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/{{pascalCase name}}.stories.ts",
