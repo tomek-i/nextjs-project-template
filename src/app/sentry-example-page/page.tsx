@@ -68,7 +68,12 @@ export default function Page() {
 
         <p>
           Next, look for the error on the{" "}
-          <a href="https://yournamemustbeunique.sentry.io/issues/?project=4507813487050832">Issues Page</a>.
+          <a
+            href={`https://${process.env.SENTRY_ORGANIZATION_NAME}.sentry.io/issues/?project=${process.env.CLIENT_SENTRY_PROJECT_ID}`}
+          >
+            Issues Page
+          </a>
+          .
         </p>
         <p style={{ marginTop: "24px" }}>
           For more information, see{" "}
