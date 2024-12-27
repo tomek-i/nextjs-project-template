@@ -1,0 +1,30 @@
+import { NoContent } from "@/lib/http" 
+
+
+import { OK } from "@/lib/http"
+
+interface {{pascalCase name}}IdParams {
+  params: {
+    {{camelCase name}}Id: string
+  }
+}
+
+/* get a single instance of {{pascalCase name}} */
+export async function GET(request: Request, { params: { {{camelCase name}}Id } }: {{pascalCase name}}IdParams) {
+  return NoContent()
+}
+
+/* delete a single instance of {{pascalCase name}} */
+export async function DELETE(request: Request, { params: { {{camelCase name}}Id } }: {{pascalCase name}}IdParams) {
+  return NoContent()
+}
+
+/* update a single instance of {{pascalCase name}} */
+export async function PATCH(request: Request, { params: { {{camelCase name}}Id } }: {{pascalCase name}}IdParams) {
+  return NoContent()
+}
+
+/* updates a single instance of {{pascalCase name}} */
+export async function PUT(request: Request, { params: { {{camelCase name}}Id } }: {{pascalCase name}}IdParams) {
+  return NoContent()
+}

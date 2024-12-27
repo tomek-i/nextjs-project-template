@@ -148,6 +148,11 @@ module.exports = async function (plop) {
         path: "src/app/api/{{kebabCase name}}/route.ts",
         templateFile: ".plop-templates/nextjs/api/templates/route.hbs",
       },
+      {
+        type: "add",
+        path: "src/app/api/{{kebabCase name}}/[{{camelCase name}}Id]/route.ts",
+        templateFile: ".plop-templates/nextjs/api/templates/id.hbs",
+      },
     ],
   })
 }
