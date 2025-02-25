@@ -1,5 +1,5 @@
 "use client"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/ui/Button/button2"
 import axios, { AxiosError } from "axios"
 
 const handleGet = async () => {

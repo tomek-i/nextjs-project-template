@@ -1,9 +1,5 @@
-import { Metadata } from "next"
+import { Button } from "@/components/ui/button";
 
-export const metadata: Metadata = {
-  title: "Home - Example Server Page",
-  description: "This is a page that is pre-rendered on the server for {{pascalCase name}}.",
-}
 
 export default function HomePage() {
   return (
@@ -12,6 +8,7 @@ export default function HomePage() {
         <p className="">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
+          <Button>  Button </Button>
         </p>
       </div>
     </main>
