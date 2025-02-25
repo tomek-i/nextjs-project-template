@@ -4,7 +4,6 @@
     "mikestead.dotenv",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "alexcvzz.vscode-sqlite",
     "bradlc.vscode-tailwindcss",
     "wayou.vscode-todo-highlight"
   ]
