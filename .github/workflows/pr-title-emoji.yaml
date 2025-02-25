@@ -1,8 +1,9 @@
 name: PR Title Prefix
 
-on:
-  pull_request:
-    types: [opened]
+# Temporarily disabled until we can figure out how to get the pr title message
+# on:
+#   pull_request:
+#     types: [opened]
 
 jobs:
   add-pr-prefix:

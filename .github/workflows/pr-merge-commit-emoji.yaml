@@ -1,9 +1,10 @@
 name: PR Merge Commit Prefix
 
-on:
-  pull_request:
-    types:
-      - closed
+# Temporarily disabled until we can figure out how to get the merge commit message
+# on:
+#   pull_request:
+#     types:
+#       - closed
 
 jobs:
   add-merge-prefix:
