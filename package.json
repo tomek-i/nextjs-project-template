@@ -47,7 +47,6 @@
     "axios": "^1.7.7",
     "better-sqlite3": "^11.1.2",
     "class-variance-authority": "^0.7.0",
-    "husky": "^9.1.6",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
@@ -56,6 +55,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "husky": "^9.1.6",
     "@chromatic-com/storybook": "^1.7.0",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
