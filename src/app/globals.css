@@ -246,6 +246,7 @@
   }
   #sidebar .sub-menu {
     display: grid;
+    /* THIS IS THE REASON THE DROP DOWN ANIMATES */
     transition: 300ms ease-in-out;
 
     > div {
