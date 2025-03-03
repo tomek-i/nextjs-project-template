@@ -42,26 +42,15 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 Explore the unique features of this starter template:
 
 - 🚀 **Next.js**: [nextjs.org](https://nextjs.org/)
-- 📚 **Storybook**: [storybook.js](https://storybook.js.org/)
 - 🎨 **Tailwind CSS**: [tailwindcss](https://tailwindcss.com/)
 - 🛠️ **Class Variants Authority**: [cva.style](https://cva.style/docs/getting-started/installation)
 - 🔄 **twmerge**: [tailwind-merge](https://github.com/dcastil/tailwind-merge)
-- 🛡️ **Zod**: [zod.dev](https://zod.dev/)
-- 🗄️ **Prisma**: [prisma.io](https://www.prisma.io/)
 - 🔧 **Plop**: [plopjs.com](https://plopjs.com/)
-- 🛡️ **Sentry**: [sentry.io](https://sentry.io)
-- 🐶 **Husky**: [husky](https://typicode.github.io/husky/)
-  - 💄 automatically add emojis to commit messages
-  - 🧪 run tests pre-commit
 - 🤖 **GitHub Workflows**:
   - ✅ Convert TODO's to issues
-  - 📊 Jest coverage reports // TODO: enable coverage reports
+  - 📊 Jest coverage reports
   - 🧪 Run tests
-    - TODO: add stryker mutation testing <https://typescript.tv/testing/boost-your-typescript-tests-with-mutation-testing/>
-    - TODO: add e2e testing using plyweight or puppeteer or cypress
 - 📝 **Issue & Pull Request Templates**
-- 🛠️ **Recommended Extensions**
-- ⚙️ **Custom VSCode Settings**
 
 ## Learn More
 
