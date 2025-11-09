@@ -1,3 +1,5 @@
+https://dev.to/pramod_boda/recommended-folder-structure-for-react-2025-48mc?ref=dailydev
+
 /src
   ├── /assets/           # Static assets (images, fonts, etc.)
   ├── /components/       # Reusable components
