@@ -6,8 +6,6 @@ Please provide a brief description of the changes you are proposing.
 
 **Checklist:**
 
-**Checklist:**
-
 - [ ] I have read and followed the [contributing guidelines](/CONTRIBUTING.md).
 - [ ] I have added relevant tests where necessary.
 - [ ] I have added tests that prove my changes are effective or that my feature works.
